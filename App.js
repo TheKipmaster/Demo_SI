@@ -1,19 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>whatsu</Text>
-    </View>
-  );
-}
+import LoginScreen from './src/screens/LoginScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const drawer = createDrawerNavigator(
+  {
+    Login: LoginScreen,
   },
-});
+  {
+    initialRouteName: 'Login',
+  }
+);
+
+const navigator = createStackNavigator(
+  {
+    drawer,
+  },
+  {
+    initialRouteName: 'drawer',
+    defaultNavigationOptions: {
+      title: 'Demonstração',
+    },
+  },
+);
+
+export default createAppContainer(navigator);
