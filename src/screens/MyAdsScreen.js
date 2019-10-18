@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const ProfileScreen = () => {
+const MyAdsScreen = () => {
   return (
     <Card>
       <CardItem>
-        <Button>Botão</Button>
+        <Button>Botão de anúncios</Button>
       </CardItem>
     </Card>
   );
 }
 
-export { ProfileScreen };
+export { MyAdsScreen };

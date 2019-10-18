@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const ProfileScreen = () => {
+const TimelineScreen = () => {
   return (
     <Card>
       <CardItem>
-        <Button>Botão</Button>
+        <Button>Outro botão</Button>
       </CardItem>
     </Card>
   );
 }
 
-export { ProfileScreen };
+export { TimelineScreen };
