@@ -28,6 +28,12 @@ Usando o terminal dentro do diretório escolhido, execute os seguintes comandos:
 
 1. Fim
 
+## Recursos
+
+**React Navigation** é uma biblioteca para lidar com as rotas do app, e [aqui](https://reactnavigation.org/docs/en/getting-started.html) tem a documentação dela
+
+**Expo** é uma série de ferramentas que aparentemente facilitam a vida de criar um app em React, [aqui](https://expo.io/features) fala mais sobre.
+
 ## Divisão de Tarefas
 
 Cada um tem as seguintes telas para implementar:
