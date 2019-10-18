@@ -2,26 +2,31 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import LoginScreen from './src/screens/LoginScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
-const drawer = createDrawerNavigator(
+const ProfileStack = createStackNavigator(
   {
-    Login: LoginScreen,
+    ProfileScreen,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'ProfileScreen',
+    defaultNavigationOptions: {
+      title: 'Perfil',
+    },
   }
 );
 
-const navigator = createStackNavigator(
+const navigator = createDrawerNavigator(
   {
-    drawer,
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: () => ({
+        title: 'Perfil',
+      }),
+    },
   },
   {
-    initialRouteName: 'drawer',
-    defaultNavigationOptions: {
-      title: 'Demonstração',
-    },
+    initialRouteName: 'Profile',
   },
 );
 

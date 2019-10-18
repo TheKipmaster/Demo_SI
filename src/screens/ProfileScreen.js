@@ -5,7 +5,7 @@ const LoginScreen = () => {
   return (
     <Card>
       <CardItem>
-        <Button>Login</Button>
+        <Button>Botão</Button>
       </CardItem>
     </Card>
   );
