@@ -7,6 +7,7 @@ import {
   TimelineScreen,
   MyAdsScreen,
   FleaMarketScreen,
+  NewEventScreen,
 } from './src/screens';
 
 const ProfileStack = createStackNavigator(
@@ -23,7 +24,13 @@ const ProfileStack = createStackNavigator(
 
 const TimelineStack = createStackNavigator(
   {
-  TimelineScreen,
+    TimelineScreen,
+    NewEventScreen: {
+      screen: NewEventScreen,
+      navigationOptions: () => ({
+        title: 'Novo Evento',
+      }),
+    },
   },
   {
     initialRouteName: 'TimelineScreen',
