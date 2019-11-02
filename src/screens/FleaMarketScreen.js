@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text, StyleSheet, View, FlatList, TouchableOpacity} from 'react-native';
-import { AdCard } from '../components/common/AdCard';
+import { FlatList, TouchableOpacity } from 'react-native';
+import AdCard from '../components/AdCard';
 
 const DATA = [
   {
@@ -41,20 +41,31 @@ const DATA = [
   },
 ];
 
-const FleaMarketScreen = ({navigation}) => {
-  return <FlatList
-    data={DATA}
-    renderItem={({ item }) => (
-      <TouchableOpacity  onPress={() => navigation.navigate('ProfileScreen')}>
+class FleaMarketScreen extends React.Component {
+  renderItem({ item }) {
+    const { navigation } = this.props;
+    const { title, desc, imageSource } = item;
+
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <AdCard
-          title={item.title}
-          desc={item.desc}
-          imageSource={item.imageSource}
+          title={title}
+          desc={desc}
+          imageSource={imageSource}
         />
       </TouchableOpacity>
-    )}
-    keyExtractor={item => item.id}
-  />
-};
+    );
+  }
 
-export { FleaMarketScreen };
+  render() {
+    return (
+      <FlatList
+        data={DATA}
+        renderItem={this.renderItem.bind(this)}
+        keyExtractor={item => item.id}
+      />
+    );
+  }
+}
+
+export default FleaMarketScreen;

@@ -1,14 +1,18 @@
 import React from 'react';
-import {Text, StyleSheet, View, Image} from 'react-native';
+import { Text, StyleSheet, View, Image } from 'react-native';
 
-const AdCard = (props) => {
-  return <View style={styles.containerStyle}>
-    <Image style={styles.imageStyle} source={props.imageSource} />
-    <View  style={styles.textStyle}>
-      <Text style={styles.titleStyle}>{props.title}</Text>
-      <Text style={styles.descStyle}>{props.desc}</Text>
+const AdCard = ({ imageSource, title, desc }) => {
+  const { containerStyle, imageStyle, textStyle, titleStyle, descStyle } = styles;
+
+  return (
+    <View style={containerStyle}>
+      <Image style={imageStyle} source={imageSource} />
+      <View  style={textStyle}>
+        <Text style={titleStyle}>{title}</Text>
+        <Text style={descStyle}>{desc}</Text>
+      </View>
     </View>
-  </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -49,4 +53,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { AdCard };
+export default AdCard;

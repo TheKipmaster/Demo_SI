@@ -1,11 +1,13 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const TimelineScreen = () => {
+const TimelineScreen = (props) => {
   return (
     <Card>
       <CardItem>
-        <Button>Outro botão</Button>
+        <Button onPress={() => props.navigation.navigate('NewEventScreen')}>
+          Novo Evento
+        </Button>
       </CardItem>
     </Card>
   );

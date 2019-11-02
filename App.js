@@ -11,9 +11,9 @@ import {
   ProfileScreen,
   TimelineScreen,
   MyAdsScreen,
-  FleaMarketScreen,
   NewEventScreen,
 } from './src/screens';
+import FleaMarketScreen from './src/screens/FleaMarketScreen';
 
 const ProfileStack = createStackNavigator(
   {
