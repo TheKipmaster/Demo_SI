@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import AdCard from '../components/AdCard';
+import AdCard from '../components/ListingCard';
 
 const DATA = [
   {

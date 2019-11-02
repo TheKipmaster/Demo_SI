@@ -10,7 +10,7 @@ import reducers from './src/reducers'
 import {
   ProfileScreen,
   TimelineScreen,
-  MyAdsScreen,
+  MyListingsScreen,
   NewEventScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
@@ -45,12 +45,12 @@ const TimelineStack = createStackNavigator(
   }
 );
 
-const MyAdsStack = createStackNavigator(
+const MyListingsStack = createStackNavigator(
   {
-    MyAdsScreen,
+    MyListingsScreen,
   },
   {
-    initialRouteName: 'MyAdsScreen',
+    initialRouteName: 'MyListingsScreen',
     defaultNavigationOptions: {
       title: 'Meus Anúncios',
     },
@@ -83,8 +83,8 @@ const navigator = createDrawerNavigator(
         title: 'Linha do Tempo',
       }),
     },
-    MyAds: {
-      screen: MyAdsStack,
+    MyListings: {
+      screen: MyListingsStack,
       navigationOptions: () => ({
         title: 'Meus Anúncios',
       }),

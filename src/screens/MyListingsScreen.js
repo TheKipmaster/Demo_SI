@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const MyAdsScreen = () => {
+const MyListingsScreen = () => {
   return (
     <Card>
       <CardItem>
@@ -11,4 +11,4 @@ const MyAdsScreen = () => {
   );
 }
 
-export { MyAdsScreen };
+export { MyListingsScreen };
