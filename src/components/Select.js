@@ -21,8 +21,8 @@ class Select extends React.Component {
         <Text style={pickerTextStyle}>{label}</Text>
         <Picker
           style={pickerStyle}
-          // selectedValue={this.props.shifts}
-          // onValueChange={this.onShiftChange.bind(this)}
+          selectedValue={this.props.selectedValue}
+          onValueChange={this.props.onShiftChange}
         >
           {this.renderPickerItems(options)}
         </Picker>
