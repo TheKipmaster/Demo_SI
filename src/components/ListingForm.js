@@ -1,39 +1,29 @@
 import React from 'react';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { formUpdate } from '../actions';
 
 import { CardItem, Input } from '../components/common';
 import Select from './Select';
 
 class ListingForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: "",
-      description: "",
-      kind: "Venda",
-      price: "",
-    };
-  }
-
   onTitleChange(value) {
-    this.setState({ title: value });
+    this.props.formUpdate({ prop: 'title', value });
   }
 
   onDescriptionChange(value) {
-    this.setState({ description: value });
+    this.props.formUpdate({ prop: 'description', value });
   }
 
   onKindChange(value) {
     if (value === "Empréstimo") {
-      this.setState({ kind: value, price: "" });
-    } else {
-      this.setState({ kind: value });
+      this.onPriceChange("");
     }
+    this.props.formUpdate({ prop: 'kind', value });
   }
 
   onPriceChange(value) {
-    this.setState({ price: value });
+    this.props.formUpdate({ prop: 'price', value });
   }
 
   render() {
@@ -44,7 +34,7 @@ class ListingForm extends React.Component {
             label='Título'
             placeholder='Meu Anúncio'
             onChangeText={this.onTitleChange.bind(this)}
-            value={this.state.title}
+            value={this.props.title}
           />
         </CardItem>
         <CardItem>
@@ -52,7 +42,7 @@ class ListingForm extends React.Component {
             label='Descrição'
             placeholder='Detalhes do anúncio'
             onChangeText={this.onDescriptionChange.bind(this)}
-            value={this.state.description}
+            value={this.props.description}
             // multiline
             // numberOfLines={3}
             // style={{ height: 120, alignItems: 'flex-start' }}
@@ -66,7 +56,7 @@ class ListingForm extends React.Component {
               "Aluguel",
               "Empréstimo",
             ]}
-            selectedValue={this.state.kind}
+            selectedValue={this.props.kind}
             onValueChange={this.onKindChange.bind(this)}
           />
         </CardItem>
@@ -75,8 +65,8 @@ class ListingForm extends React.Component {
             label='Preço'
             placeholder='R$5,00'
             onChangeText={this.onPriceChange.bind(this)}
-            value={this.state.price}
-            editable={this.state.kind !== "Empréstimo"}
+            value={this.props.price}
+            editable={this.props.kind !== "Empréstimo"}
             keyboardType={'numeric'}
           />
         </CardItem>
@@ -85,4 +75,10 @@ class ListingForm extends React.Component {
   }
 }
 
-export default ListingForm;
+const mapStateToProps = (state) => {
+  const { title, description, kind, price } = state.listingForm;
+
+  return { title, description, kind, price };
+}
+
+export default connect(mapStateToProps, { formUpdate })(ListingForm);
