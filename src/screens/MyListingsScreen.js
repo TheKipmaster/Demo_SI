@@ -1,11 +1,13 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const MyListingsScreen = () => {
+const MyListingsScreen = ({ navigation }) => {
   return (
     <Card>
       <CardItem>
-        <Button>Botão de anúncios</Button>
+        <Button onPress={() => navigation.navigate('NewListingScreen')}>
+          Botão
+        </Button>
       </CardItem>
     </Card>
   );
