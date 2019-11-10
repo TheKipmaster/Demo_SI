@@ -15,10 +15,17 @@ import {
   NewListingScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
+import LoginScreen from './src/screens/LoginScreen';
 
 const ProfileStack = createStackNavigator(
   {
     ProfileScreen,
+    LoginScreen: {
+      screen: LoginScreen,
+      navigationOptions: () => ({
+        title: 'Login',
+      }),
+    },
   },
   {
     initialRouteName: 'ProfileScreen',

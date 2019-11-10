@@ -1,11 +1,13 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
   return (
     <Card>
       <CardItem>
-        <Button>Botão</Button>
+        <Button onPress={() => navigation.navigate('LoginScreen')}>
+          Entrar
+        </Button>
       </CardItem>
     </Card>
   );
