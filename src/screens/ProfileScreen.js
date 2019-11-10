@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardItem, Button } from '../components/common';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = () => {
   return (
     <Card>
       <CardItem>
-        <Button onPress={() => navigation.navigate('LoginScreen')}>
-          Entrar
+        <Button>
+          Botão
         </Button>
       </CardItem>
     </Card>
