@@ -95,12 +95,6 @@ const navigator = createDrawerNavigator(
         title: 'Mercado de Pulgas',
       }),
     },
-    Profile: {
-      screen: MyListingsStack,
-      navigationOptions: () => ({
-        title: 'Meus anúncios',
-      }),
-    }
   },
   {
     initialRouteName: 'Profile',
