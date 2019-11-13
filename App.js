@@ -1,7 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { createAppContainer } from 'react-navigation';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
@@ -12,8 +13,11 @@ import {
   TimelineScreen,
   MyListingsScreen,
   NewEventScreen,
+  NewListingScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import NavigationService from './src/NavigationService';
 
 const ProfileStack = createStackNavigator(
   {
@@ -48,6 +52,12 @@ const TimelineStack = createStackNavigator(
 const MyListingsStack = createStackNavigator(
   {
     MyListingsScreen,
+    NewListingScreen: {
+      screen: NewListingScreen,
+      navigationOptions: () => ({
+        title: 'Novo Anúncio',
+      }),
+    },
   },
   {
     initialRouteName: 'MyListingsScreen',
@@ -69,7 +79,7 @@ const FleaMarketStack = createStackNavigator(
   }
 );
 
-const navigator = createDrawerNavigator(
+const Main = createDrawerNavigator(
   {
     Profile: {
       screen: ProfileStack,
@@ -101,14 +111,29 @@ const navigator = createDrawerNavigator(
   },
 );
 
+const navigator = createSwitchNavigator(
+  {
+    LoginScreen,
+    Main,
+  },
+  {
+    initialRouteName: 'LoginScreen',
+    defaultNavigationOptions: {
+      title: 'Login'
+    }
+  }
+);
+
 const Navigation = createAppContainer(navigator);
-const store = createStore(reducers);
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Navigation />
+        <Navigation
+          ref={(navigatorRef => NavigationService.setTopLevelNavigator(navigatorRef))}
+        />
       </Provider>
     );
   }

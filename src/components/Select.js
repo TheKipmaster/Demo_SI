@@ -14,15 +14,15 @@ class Select extends React.Component {
 
   render() {
     const { pickerStyle, pickerTextStyle, containerStyle } = styles;
-    const { label, options } = this.props;
+    const { label, options, selectedValue, onValueChange } = this.props;
 
     return (
       <View style={containerStyle}>
         <Text style={pickerTextStyle}>{label}</Text>
         <Picker
           style={pickerStyle}
-          selectedValue={this.props.selectedValue}
-          onValueChange={this.props.onShiftChange}
+          selectedValue={selectedValue}
+          onValueChange={onValueChange}
         >
           {this.renderPickerItems(options)}
         </Picker>

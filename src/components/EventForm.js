@@ -1,26 +1,26 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { eventUpdate } from '../actions';
+import { formUpdate } from '../actions';
 
 import { CardItem, Input } from '../components/common';
 import Select from './Select';
 
 class EventForm extends React.Component {
   onNameChange(value) {
-    this.props.eventUpdate({ prop: 'name', value })
+    this.props.formUpdate({ prop: 'name', value })
   }
 
   onDescriptionChange(value) {
-    this.props.eventUpdate({ prop: 'description', value })
+    this.props.formUpdate({ prop: 'description', value })
   }
 
   onSubjectChange(value) {
-    this.props.eventUpdate({ prop: 'subject', value })
+    this.props.formUpdate({ prop: 'subject', value })
   }
 
   onDateChange(value) {
-    this.props.eventUpdate({ prop: 'date', value })
+    this.props.formUpdate({ prop: 'date', value })
   }
 
   render() {
@@ -76,4 +76,4 @@ const mapStateToProps = (state) => {
   return { name, description, subject, date };
 }
 
-export default connect(mapStateToProps, { eventUpdate })(EventForm);
+export default connect(mapStateToProps, { formUpdate })(EventForm);

@@ -5,7 +5,9 @@ const ProfileScreen = () => {
   return (
     <Card>
       <CardItem>
-        <Button>Botão</Button>
+        <Button>
+          Botão
+        </Button>
       </CardItem>
     </Card>
   );
