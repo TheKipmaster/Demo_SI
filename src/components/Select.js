@@ -6,7 +6,7 @@ class Select extends React.Component {
     let items = []
 
     options.forEach((option, key) => {
-      items.push(<Picker.Item label={option} value={option} key={key} />);
+      items.push(<Picker.Item label={option} value={key} key={key} />);
     });
 
     return items;

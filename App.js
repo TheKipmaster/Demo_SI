@@ -12,11 +12,12 @@ import {
   ProfileScreen,
   TimelineScreen,
   MyListingsScreen,
-  NewEventScreen,
   NewListingScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import NewEventScreen from './src/screens/NewEventScreen';
+
 import NavigationService from './src/NavigationService';
 
 const ProfileStack = createStackNavigator(

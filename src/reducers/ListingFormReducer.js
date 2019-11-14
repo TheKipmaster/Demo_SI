@@ -1,5 +1,5 @@
 import {
-  FORM_UPDATE,
+  LISTING_FORM_UPDATE,
   // EVENT_CREATE,
   // EVENT_SAVE_SUCCESS,
 } from '../actions/types';
@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FORM_UPDATE:
+    case LISTING_FORM_UPDATE:
       return {
         ...state,
         [action.payload.prop]: action.payload.value

@@ -1,29 +1,29 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { formUpdate } from '../actions';
+import { listingFormUpdate } from '../actions';
 
 import { CardItem, Input } from '../components/common';
 import Select from './Select';
 
 class ListingForm extends React.Component {
   onTitleChange(value) {
-    this.props.formUpdate({ prop: 'title', value });
+    this.props.listingFormUpdate({ prop: 'title', value });
   }
 
   onDescriptionChange(value) {
-    this.props.formUpdate({ prop: 'description', value });
+    this.props.listingFormUpdate({ prop: 'description', value });
   }
 
   onKindChange(value) {
     if (value === "Empréstimo") {
       this.onPriceChange("");
     }
-    this.props.formUpdate({ prop: 'kind', value });
+    this.props.listingFormUpdate({ prop: 'kind', value });
   }
 
   onPriceChange(value) {
-    this.props.formUpdate({ prop: 'price', value });
+    this.props.listingFormUpdate({ prop: 'price', value });
   }
 
   render() {
@@ -81,4 +81,4 @@ const mapStateToProps = (state) => {
   return { title, description, kind, price };
 }
 
-export default connect(mapStateToProps, { formUpdate })(ListingForm);
+export default connect(mapStateToProps, { listingFormUpdate })(ListingForm);

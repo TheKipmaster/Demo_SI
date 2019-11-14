@@ -1,26 +1,30 @@
 import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { formUpdate } from '../actions';
+import { eventFormUpdate } from '../actions';
 
 import { CardItem, Input } from '../components/common';
 import Select from './Select';
 
 class EventForm extends React.Component {
-  onNameChange(value) {
-    this.props.formUpdate({ prop: 'name', value })
+  onTitleChange(value) {
+    this.props.eventFormUpdate({ prop: 'title', value })
   }
 
   onDescriptionChange(value) {
-    this.props.formUpdate({ prop: 'description', value })
+    this.props.eventFormUpdate({ prop: 'description', value })
   }
 
   onSubjectChange(value) {
-    this.props.formUpdate({ prop: 'subject', value })
+    this.props.eventFormUpdate({ prop: 'subject_ids', value })
   }
 
   onDateChange(value) {
-    this.props.formUpdate({ prop: 'date', value })
+    this.props.eventFormUpdate({ prop: 'date', value })
+  }
+
+  onLocalChange(value) {
+    this.props.eventFormUpdate({ prop: 'local', value })
   }
 
   render() {
@@ -30,8 +34,8 @@ class EventForm extends React.Component {
           <Input
             label='Nome'
             placeholder='P1'
-            onChangeText={this.onNameChange.bind(this)}
-            value={this.props.name}
+            onChangeText={this.onTitleChange.bind(this)}
+            value={this.props.title}
           />
         </CardItem>
         <CardItem>
@@ -53,7 +57,7 @@ class EventForm extends React.Component {
               "Informática Aplicada à Educação",
               "Projeto e Análise de Algoritmos",
             ]}
-            selectedValue={this.props.subject}
+            selectedValue={this.props.subject_ids}
             onValueChange={this.onSubjectChange.bind(this)}
           />
         </CardItem>
@@ -65,15 +69,23 @@ class EventForm extends React.Component {
             value={this.props.date}
           />
         </CardItem>
+        <CardItem>
+          <Input
+            label='Local'
+            placeholder='ICC ANF 12'
+            onChangeText={this.onLocalChange.bind(this)}
+            value={this.props.local}
+          />
+        </CardItem>
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { name, description, subject, date } = state.eventForm;
+  const { title, description, subject_ids, date, local } = state.eventForm;
 
-  return { name, description, subject, date };
+  return { title, description, subject_ids, date, local };
 }
 
-export default connect(mapStateToProps, { formUpdate })(EventForm);
+export default connect(mapStateToProps, { eventFormUpdate })(EventForm);

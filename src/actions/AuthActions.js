@@ -13,8 +13,8 @@ export const loginUser = (email, password) => (
     dispatch({ type: LOGIN_USER })
 
     axios.post(`${API_URL}/login`, { user: { email, password } })
-      .then((response) => loginUserSuccess(dispatch, response))
-      .catch((error) => loginUserFail(dispatch, error.response.data));
+      .then(response => loginUserSuccess(dispatch, response))
+      .catch(error => loginUserFail(dispatch, error));
   }
 );
 
@@ -38,5 +38,6 @@ const loginUserSuccess = (dispatch, response) => {
 };
 
 const loginUserFail = (dispatch, error) => {
-  dispatch({ type: LOGIN_USER_FAIL, payload: error });
+  console.log(error);
+  dispatch({ type: LOGIN_USER_FAIL, payload: error.response.data });
 }
