@@ -18,7 +18,7 @@ class NewEventScreen extends React.Component {
     return (
       <View>
         <Card>
-          <EventForm />
+          <EventForm {...this.props.eventForm} />
           <CardItem>
             <Button onPress={this.onSubmit.bind(this)}>Criar Evento</Button>
           </CardItem>
@@ -28,11 +28,8 @@ class NewEventScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { token } = state.auth.user;
-  const { eventForm } = state;
-
-  return { token, eventForm };
+const mapStateToProps = ({ eventForm, auth }) => {
+  return { token: auth.user.token, eventForm };
 }
 
 export default connect(mapStateToProps, { eventCreate })(NewEventScreen);

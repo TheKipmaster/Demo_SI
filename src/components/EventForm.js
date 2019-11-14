@@ -82,10 +82,10 @@ class EventForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { title, description, subject_ids, date, local } = state.eventForm;
+// const mapStateToProps = (state) => {
+//   const { title, description, subject_ids, date, local } = state.eventForm;
 
-  return { title, description, subject_ids, date, local };
-}
+//   return { title, description, subject_ids, date, local };
+// }
 
-export default connect(mapStateToProps, { eventFormUpdate })(EventForm);
+export default connect(null, { eventFormUpdate })(EventForm);
