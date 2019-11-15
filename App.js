@@ -12,6 +12,7 @@ import {
   TimelineScreen,
   MyListingsScreen,
   NewEventScreen,
+  ListingDetailsScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
 
@@ -60,6 +61,12 @@ const MyListingsStack = createStackNavigator(
 const FleaMarketStack = createStackNavigator(
   {
     FleaMarketScreen,
+    ListingDetailsScreen: {
+      screen: ListingDetailsScreen,
+      navigationOptions: () => ({
+        title: 'Detalhes do Anúncio',
+      }),
+    },
   },
   {
     initialRouteName: 'FleaMarketScreen',
