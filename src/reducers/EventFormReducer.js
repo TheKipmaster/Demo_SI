@@ -1,6 +1,6 @@
 import {
   EVENT_FORM_UPDATE,
-  EVENT_CREATE,
+  EVENT_CREATE_SUCCESS,
   // EVENT_SAVE_SUCCESS,
 } from '../actions/types';
 
@@ -13,15 +13,13 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log(state);
-
   switch (action.type) {
     case EVENT_FORM_UPDATE:
       return {
         ...state,
         [action.payload.prop]: action.payload.value
       };
-    case EVENT_CREATE:
+    case EVENT_CREATE_SUCCESS:
       return INITIAL_STATE;
     // case EVENT_SAVE_SUCCESS:
     //   return INITIAL_STATE;
