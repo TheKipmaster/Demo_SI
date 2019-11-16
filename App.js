@@ -14,6 +14,7 @@ import {
   MyListingsScreen,
   NewEventScreen,
   NewListingScreen,
+  ListingDetailsScreen,
 } from './src/screens';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
 import LoginScreen from './src/screens/LoginScreen';
@@ -70,6 +71,12 @@ const MyListingsStack = createStackNavigator(
 const FleaMarketStack = createStackNavigator(
   {
     FleaMarketScreen,
+    ListingDetailsScreen: {
+      screen: ListingDetailsScreen,
+      navigationOptions: () => ({
+        title: 'Detalhes do Anúncio',
+      }),
+    },
   },
   {
     initialRouteName: 'FleaMarketScreen',
