@@ -1,41 +1,43 @@
 import React from 'react';
-import {Text, Image, View, StyleSheet} from 'react-native';
+import { Text, Image, View, StyleSheet, ScrollView } from 'react-native';
 import { Card, CardItem, Button } from '../components/common';
 
-const ListingDetailsScreen = ({navigation}) => {
+const ListingDetailsScreen = ({ navigation }) => {
   const item = navigation.getParam('item');
-  const {titleStyle, descStyle, avatarStyle, containerStyle, textStyle, imageStyle} = styles;
+  const { titleStyle, descStyle, avatarStyle, containerStyle, textStyle, imageStyle } = styles;
 
   return (
-    <Card>
+    <ScrollView>
+      <Card>
 
-      <CardItem>
-        <Text style={titleStyle}>{item.title}</Text>
-      </CardItem>
+        <CardItem>
+          <Text style={titleStyle}>{item.title}</Text>
+        </CardItem>
 
-      <CardItem>
-        <Image source={item.imageSource} style={imageStyle} />
-      </CardItem>
+        <CardItem>
+          <Image source={item.imageSource} style={imageStyle} />
+        </CardItem>
 
-      <CardItem>
-        <Text style={descStyle}>{item.desc}</Text>
-      </CardItem>
+        <CardItem>
+          <Text style={descStyle}>{item.desc}</Text>
+        </CardItem>
 
-      <CardItem>
-        <View style={containerStyle}>
-          <Image source={require('../../assets/man.png')} style={avatarStyle} />
-          <View>
-            <Text style={textStyle}>Nome</Text>
-            <Text style={textStyle}>Matricula</Text>
+        <CardItem>
+          <View style={containerStyle}>
+            <Image source={require('../../assets/man.png')} style={avatarStyle} />
+            <View>
+              <Text style={textStyle}>Nome</Text>
+              <Text style={textStyle}>Matricula</Text>
+            </View>
           </View>
-        </View>
-      </CardItem>
+        </CardItem>
 
-      <CardItem>
-        <Button>Entrar em Contato</Button>
-      </CardItem>
+        <CardItem>
+          <Button>Entrar em Contato</Button>
+        </CardItem>
 
-  </Card>
+      </Card>
+    </ScrollView>
   );
 };
 
