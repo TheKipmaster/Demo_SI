@@ -12,8 +12,8 @@ import {
   ProfileScreen,
   TimelineScreen,
   MyListingsScreen,
-  NewListingScreen,
 } from './src/screens';
+import NewListingScreen from './src/screens/NewListingScreen';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import NewEventScreen from './src/screens/NewEventScreen';

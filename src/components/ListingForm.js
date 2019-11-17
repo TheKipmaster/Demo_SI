@@ -75,10 +75,4 @@ class ListingForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { title, description, kind, price } = state.listingForm;
-
-  return { title, description, kind, price };
-}
-
-export default connect(mapStateToProps, { listingFormUpdate })(ListingForm);
+export default connect(null, { listingFormUpdate })(ListingForm);
