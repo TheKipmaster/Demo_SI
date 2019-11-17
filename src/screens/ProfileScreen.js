@@ -7,15 +7,15 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
+import { connect } from 'react-redux';
 import PureChart from 'react-native-pure-chart';
-import { Card, CardItem, Button } from '../components/common';
 
-const user = {
-  name: "Felippe Carvalho e Kipman",
-  registration_id: "160026280",
-  ira: "4,02",
-  course: "Computação"
-}
+// const user = {
+//   name: "Felippe Carvalho e Kipman",
+//   registration_id: "160026280",
+//   ira: "3,62",
+//   course: "Computação"
+// }
 
 let sampleDataPie = [
   {
@@ -40,16 +40,17 @@ let sampleDataLine = [
 class ProfileScreen extends React.Component {
 
   render() {
+    const { name, registration_id, ira, avatar } = this.props.user;
     return (
       <ScrollView style={styles.container} >
         <View style={styles.header}></View>
-        <Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+        <Image style={styles.avatar} source={{ uri: avatar.url }} />
         <View style={styles.body}>
           <View style={styles.bodyContent}>
-            <Text style={styles.description}>{user.name}</Text>
-            <Text style={styles.description}>{user.registration_id}</Text>
-            <Text style={styles.description}>{"IRA: " + user.ira}</Text>
-            <Text style={styles.title}>{user.course}</Text>
+            <Text style={styles.description}>{name}</Text>
+            <Text style={styles.description}>{registration_id}</Text>
+            <Text style={styles.description}>{"IRA: " + ira}</Text>
+            <Text style={styles.title}>Computação</Text>
 
             <Text style={styles.subtitle}>Créditos feitos/restantes</Text>
             <PureChart Chart data={sampleDataPie} type='pie' styles={styles.chart} />
@@ -140,6 +141,10 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapStateToProps = ({ auth }) => {
+  const { user } = auth;
 
+  return { user };
+}
 
-export { ProfileScreen };
+export default connect(mapStateToProps, {})(ProfileScreen);
