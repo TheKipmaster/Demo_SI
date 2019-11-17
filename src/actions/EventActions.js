@@ -1,8 +1,9 @@
 import {
   EVENT_CREATE_SUCCESS,
-  API_URL,
+  EVENT_FETCH_SUCCESS,
   EVENT_FORM_UPDATE,
-  EVENT_CREATE_FAIL
+  EVENT_CREATE_FAIL,
+  API_URL,
 } from './types';
 import * as axios from 'axios';
 import NavigationService from '../NavigationService';
@@ -11,6 +12,17 @@ export const eventFormUpdate = ({ prop, value }) => ({
   type: EVENT_FORM_UPDATE,
   payload: { prop, value }
 });
+
+export const eventFetch = (userToken) => (
+  (dispatch) => {
+    axios.get(
+      `${API_URL}/user/calendar/events.json`,
+      { headers: { Authorization: userToken } },
+    )
+      .then(response => dispatch({ type: EVENT_FETCH_SUCCESS, payload: response.data}))
+      .catch(error => console.log(error))
+  }
+);
 
 export const eventCreate = (fields, userToken) => (
   (dispatch) => {

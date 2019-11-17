@@ -1,21 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import Timeline from 'react-native-timeline-listview';
-import { Card, CardItem, Button } from '../components/common';
+
+import { eventFetch } from '../actions';
 
 class TimelineScreen extends React.Component {
-  constructor() {
-    super()
-    this.data = [
-      { time: '08:00', title: 'Event 5', description: 'Event 5 Description' },
-      { time: '09:00', title: 'Event 1', description: 'Event 1 Description' },
-      { time: '10:45', title: 'Event 2', description: 'Event 2 Description' },
-      { time: '12:00', title: 'Event 3', description: 'Event 3 Description' },
-      { time: '14:00', title: 'Event 4', description: 'Event 4 Description' },
-      { time: '16:30', title: 'Event 5', description: 'Event 5 Description' }
-    ]
-  }
-
   // onRefresh(){
   //   //set initial data
   // }
@@ -33,18 +23,43 @@ class TimelineScreen extends React.Component {
   //   }
   // }
 
+  componentWillMount() {
+    this.props.eventFetch(this.props.token);
+  }
+
+  formatData() {
+    data = [];
+
+    this.props.events.forEach(event => {
+      let time = event.date;
+      const { description, title } = event;
+
+      if (event.subjects.length > 0) {
+        time += ` - ${event.subjects[0].time}`
+      }
+
+      data.push({ time, title, description });
+    });
+
+    return data;
+  }
+
   render() {
+    const { containerStyle, timeStyle, } = styles;
+
     return (
-      <View style={styles.container}>
+      <View style={containerStyle}>
         <Timeline
-          data={this.data}
+          data={this.formatData()}
           circleSize={20}
           circleColor='rgb(45,156,219)'
           lineColor='rgb(45,156,219)'
-          timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
-          timeStyle={{ textAlign: 'center', backgroundColor: '#ff9797', color: 'white', padding: 5, borderRadius: 13 }}
+          timeContainerStyle={{ minWidth: 52 }}
+          timeStyle={timeStyle}
           descriptionStyle={{ color: 'gray' }}
           columnFormat={'two-column'}
+          options={{ paddingTop: 5 }}
+          showtime={false}
         />
       </View>
     )
@@ -52,15 +67,25 @@ class TimelineScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  timeStyle: {
+    textAlign: 'center',
+    backgroundColor: '#ff9797',
+    color: 'white',
+    padding: 5,
+    borderRadius: 13,
+  },
+  containerStyle: {
     flex: 1,
     padding: 20,
-    backgroundColor: 'white'
-  },
-  list: {
-    flex: 1,
-    marginTop: 20,
+    paddingTop: 0,
+    backgroundColor: 'white',
   },
 });
 
-export { TimelineScreen };
+const mapStateToProps = ({ auth, events }) => {
+  const { token } = auth.user;
+
+  return { token, events: events.events };
+};
+
+export default connect(mapStateToProps, { eventFetch })(TimelineScreen);

@@ -9,15 +9,16 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import reducers from './src/reducers'
 
 import {
-  TimelineScreen,
   MyListingsScreen,
   ListingDetailsScreen,
+  // TimelineScreen,
 } from './src/screens';
 import NewListingScreen from './src/screens/NewListingScreen';
 import FleaMarketScreen from './src/screens/FleaMarketScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import NewEventScreen from './src/screens/NewEventScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
+import TimelineScreen from './src/screens/TimelineScreen';
 
 import NavigationService from './src/NavigationService';
 
