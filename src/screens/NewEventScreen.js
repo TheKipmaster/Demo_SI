@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Card, CardItem, Button } from '../components/common';
@@ -12,6 +12,7 @@ class NewEventScreen extends React.Component {
     const { eventForm, token } = this.props;
 
     this.props.eventCreate(eventForm, token);
+    Keyboard.dismiss();
   }
 
   render() {
