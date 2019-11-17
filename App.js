@@ -21,6 +21,8 @@ import {
 
 import NavigationService from './src/NavigationService';
 
+console.disableYellowBox = true;
+
 const ProfileStack = createStackNavigator(
   {
     ProfileScreen,
