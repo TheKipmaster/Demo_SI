@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   loading: false,
   user: {
     token: null,
-    id: null,
+    registration_id: null,
     email: null,
     name: null,
     ira: null,

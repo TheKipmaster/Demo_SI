@@ -19,13 +19,13 @@ export const loginUser = (email, password) => (
 );
 
 const loginUserSuccess = (dispatch, response) => {
-  const { avatar, id, email, name, ira } = response.data;
+  const { avatar, registration_id, email, name, ira } = response.data;
   const { authorization } = response.headers
 
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: {
-      id,
+      registration_id,
       email,
       name,
       ira,
