@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
   imageStyle: {
     flexDirection: 'column',
     alignSelf: 'center',
+    height: 64,
+    width: 64,
   },
   textStyle: {
     flex: 1,
