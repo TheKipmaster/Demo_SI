@@ -11,14 +11,13 @@ import reducers from './src/reducers'
 import {
   MyListingsScreen,
   ListingDetailsScreen,
-  // TimelineScreen,
+  NewListingScreen,
+  FleaMarketScreen,
+  NewEventScreen,
+  TimelineScreen,
+  ProfileScreen,
+  LoginScreen,
 } from './src/screens';
-import NewListingScreen from './src/screens/NewListingScreen';
-import FleaMarketScreen from './src/screens/FleaMarketScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import NewEventScreen from './src/screens/NewEventScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
-import TimelineScreen from './src/screens/TimelineScreen';
 
 import NavigationService from './src/NavigationService';
 
