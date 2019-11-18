@@ -16,7 +16,7 @@ class ListingForm extends React.Component {
   }
 
   onKindChange(value) {
-    if (value === "Empréstimo") {
+    if (value === 2) {
       this.onPriceChange("");
     }
     this.props.listingFormUpdate({ prop: 'kind', value });
@@ -66,7 +66,7 @@ class ListingForm extends React.Component {
             placeholder='R$5,00'
             onChangeText={this.onPriceChange.bind(this)}
             value={this.props.price}
-            editable={this.props.kind !== "Empréstimo"}
+            editable={this.props.kind !== 2}
             keyboardType={'numeric'}
           />
         </CardItem>
