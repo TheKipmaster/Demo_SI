@@ -3,7 +3,7 @@ import { FlatList, TouchableOpacity, Text, ScrollView, StyleSheet } from 'react-
 import { connect } from 'react-redux';
 
 import { Card, CardItem, Button } from '../components/common';
-import AdCard from '../components/ListingCard';
+import ListingCard from '../components/ListingCard';
 import { listingFetch } from '../actions';
 
 class MyListingsScreen extends React.Component {
@@ -23,18 +23,7 @@ class MyListingsScreen extends React.Component {
   }
 
   renderItem({ item }) {
-    const { navigation } = this.props;
-    const { title, description, imageSource } = item;
-
-    return (
-      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-        <AdCard
-          title={title}
-          desc={description}
-          imageSource={imageSource}
-        />
-      </TouchableOpacity>
-    );
+    return (<ListingCard listing={item} navigation={this.props.navigation} />);
   }
 
   render() {

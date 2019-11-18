@@ -1,17 +1,24 @@
 import React from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 
-const AdCard = ({ imageSource, title, desc }) => {
+const ListingCard = ({ listing, navigation }) => {
   const { containerStyle, imageStyle, textStyle, titleStyle, descStyle } = styles;
+  const { title, description, imageSource } = listing;
 
   return (
-    <View style={containerStyle}>
+    <TouchableOpacity
+      style={containerStyle}
+      onPress={() => navigation.navigate(
+        'ListingDetailsScreen',
+        { listing }
+      )}
+    >
       <Image style={imageStyle} source={imageSource} />
       <View  style={textStyle}>
         <Text style={titleStyle}>{title}</Text>
-        <Text style={descStyle}>{desc}</Text>
+        <Text style={descStyle}>{description}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -55,4 +62,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AdCard;
+export default ListingCard;

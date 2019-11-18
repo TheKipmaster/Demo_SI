@@ -3,7 +3,7 @@ import { Text, Image, View, StyleSheet, ScrollView } from 'react-native';
 import { Card, CardItem, Button } from '../components/common';
 
 const ListingDetailsScreen = ({ navigation }) => {
-  const item = navigation.getParam('item');
+  const listing = navigation.getParam('listing');
   const { titleStyle, descStyle, avatarStyle, containerStyle, textStyle, imageStyle } = styles;
 
   return (
@@ -11,15 +11,15 @@ const ListingDetailsScreen = ({ navigation }) => {
       <Card>
 
         <CardItem>
-          <Text style={titleStyle}>{item.title}</Text>
+          <Text style={titleStyle}>{listing.title}</Text>
         </CardItem>
 
         <CardItem>
-          <Image source={item.imageSource} style={imageStyle} />
+          <Image source={listing.imageSource} style={imageStyle} />
         </CardItem>
 
         <CardItem>
-          <Text style={descStyle}>{item.desc}</Text>
+          <Text style={descStyle}>{listing.description}</Text>
         </CardItem>
 
         <CardItem>
