@@ -1,60 +1,36 @@
 import React from 'react';
 import { FlatList, TouchableOpacity, Text, ScrollView, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+
 import { Card, CardItem, Button } from '../components/common';
 import AdCard from '../components/ListingCard';
-
-const FINISHED = [
-  {
-    id: '1',
-    title: "Um Anúncio",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pulvinar sem eu tincidunt maximus. Morbi ultrices, elit at dictum accumsan, mi nisl consequat ipsum, non dapibus massa quam id elit. Cras et condimentum ante.",
-    imageSource: require('../../assets/adsmini.png'),
-  },
-  {
-    id: '2',
-    title: "Outro Anúncio",
-    desc: "Nunc luctus sem nec metus euismod, aliquet bibendum ante finibus. Nulla facilisi. Vivamus ac magna ut tortor mollis vulputate non tristique tellus.",
-    imageSource: require('../../assets/adsmini.png'),
-  },
-  {
-    id: '3',
-    title: "Another Anúncio",
-    desc: "Praesent non ligula sagittis, luctus ligula nec, tempus velit. Praesent consequat eros in ligula pellentesque, at convallis enim tristique. ",
-    imageSource: require('../../assets/adsmini.png'),
-  }
-]
-
-const IN_PROGRESS = [
-  {
-    id: '4',
-    title: "Mais um Anúncio",
-    desc: "Mauris sollicitudin leo sapien, ac placerat orci rutrum ac.",
-    imageSource: require('../../assets/adsmini.png'),
-  },
-  {
-    id: '5',
-    title: "Olha o Anúncio",
-    desc: "Sed nulla ipsum, lobortis vel nulla a, varius ultricies justo. Duis ut pretium orci.",
-    imageSource: require('../../assets/adsmini.png'),
-  },
-  {
-    id: '6',
-    title: "Outro Anúncio",
-    desc: "Nunc luctus sem nec metus euismod, aliquet bibendum ante finibus. Nulla facilisi. Vivamus ac magna ut tortor mollis vulputate non tristique tellus.",
-    imageSource: require('../../assets/adsmini.png'),
-  }
-]
+import { listingFetch } from '../actions';
 
 class MyListingsScreen extends React.Component {
+  componentWillMount() {
+    this.props.listingFetch(this.props.token);
+  }
+
+  activeListings(status) {
+    const { listings } = this.props;
+
+    const list = listings.filter(listing => listing.active == status);
+
+    return list.map(item => ({
+      ...item,
+      imageSource: require('../../assets/adsmini.png'),
+    }));
+  }
+
   renderItem({ item }) {
     const { navigation } = this.props;
-    const { title, desc, imageSource } = item;
+    const { title, description, imageSource } = item;
 
     return (
       <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <AdCard
           title={title}
-          desc={desc}
+          desc={description}
           imageSource={imageSource}
         />
       </TouchableOpacity>
@@ -68,7 +44,7 @@ class MyListingsScreen extends React.Component {
       <ScrollView>
         <Card>
           <CardItem>
-            <Button onPress={() => navigation.navigate('NewListingScreen')}>
+            <Button onPress={() => navigation.navigate("NewListingScreen")}>
               Novo Anúncio
             </Button>
           </CardItem>
@@ -76,16 +52,16 @@ class MyListingsScreen extends React.Component {
 
         <Text style={styles.titleText}>Em Andamento</Text>
         <FlatList
-          data={IN_PROGRESS}
+          data={this.activeListings(true)}
           renderItem={this.renderItem.bind(this)}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
         />
 
         <Text style={styles.titleText}>Histórico</Text>
         <FlatList
-          data={FINISHED}
+          data={this.activeListings(false)}
           renderItem={this.renderItem.bind(this)}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
         />
       </ScrollView>
     );
@@ -100,7 +76,12 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10
   },
-
 });
 
-export { MyListingsScreen };
+const mapStateToProps = ({ auth, listings }) => {
+  const { token } = auth.user;
+
+  return { token, listings: listings.listings };
+}
+
+export default connect(mapStateToProps, { listingFetch })(MyListingsScreen);

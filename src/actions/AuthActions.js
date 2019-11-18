@@ -22,6 +22,7 @@ const loginUserSuccess = (dispatch, response) => {
   const { avatar, registration_id, email, name, ira } = response.data;
   const { authorization } = response.headers
 
+
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: {

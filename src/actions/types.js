@@ -7,6 +7,8 @@ export const EVENT_FETCH_FAIL = 'event_fetch_fail';
 export const LISTING_FORM_UPDATE = 'listing_form_update';
 export const LISTING_CREATE_SUCCESS = 'listing_create_success';
 export const LISTING_CREATE_FAIL = 'listing_create_fail';
+export const LISTING_FETCH_SUCCESS = 'listing_fetch_success';
+export const LISTING_FETCH_FAIL = 'listing_fetch_fail';
 
 export const LOGIN_USER = 'login_user';
 export const LOGIN_USER_FAIL = 'login_user_fail';
