@@ -3,6 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Timeline from 'react-native-timeline-listview';
 
+import { Card, CardItem, Button } from '../components/common';
+
 import { eventFetch } from '../actions';
 
 class TimelineScreen extends React.Component {
@@ -46,9 +48,17 @@ class TimelineScreen extends React.Component {
 
   render() {
     const { containerStyle, timeStyle, } = styles;
+    const { navigation } = this.props;
 
     return (
       <View style={containerStyle}>
+        <Card>
+          <CardItem>
+            <Button onPress={() => navigation.navigate('NewEventScreen')}>
+              Novo Evento
+            </Button>
+          </CardItem>
+        </Card>
         <Timeline
           data={this.formatData()}
           circleSize={20}
