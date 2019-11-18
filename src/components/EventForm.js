@@ -52,11 +52,11 @@ class EventForm extends React.Component {
         <CardItem>
           <Select
             label="Disciplina"
-            options={[
-              "Sistemas de Informação",
-              "Informática Aplicada à Educação",
-              "Projeto e Análise de Algoritmos",
-            ]}
+            options={{
+              "Sistemas de Informação": 0,
+              "Informática Aplicada à Educação": 1,
+              "Projeto e Análise de Algoritmos": 2,
+            }}
             selectedValue={this.props.subject_ids}
             onValueChange={this.onSubjectChange.bind(this)}
           />

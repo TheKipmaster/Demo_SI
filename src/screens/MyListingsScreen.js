@@ -62,11 +62,15 @@ class MyListingsScreen extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
+
     return (
       <ScrollView>
         <Card>
           <CardItem>
-            <Button>Novo Anúncio</Button>
+            <Button onPress={() => navigation.navigate('NewListingScreen')}>
+              Novo Anúncio
+            </Button>
           </CardItem>
         </Card>
 

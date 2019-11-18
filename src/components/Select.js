@@ -5,9 +5,13 @@ class Select extends React.Component {
   renderPickerItems(options) {
     let items = []
 
-    options.forEach((option, key) => {
-      items.push(<Picker.Item label={option} value={key} key={key} />);
-    });
+    // options.forEach((option, index) => {
+    //   items.push(<Picker.Item label={option} value={index} key={index} />);
+    // });
+
+    for (let [key, value] of Object.entries(options)) {
+      items.push(<Picker.Item label={key} value={value} key={value} />);
+    }
 
     return items;
   }

@@ -6,7 +6,7 @@ import {
 const INITIAL_STATE = {
   title: "",
   description: "",
-  kind: "Venda",
+  kind: "sell",
   price: "",
 };
 

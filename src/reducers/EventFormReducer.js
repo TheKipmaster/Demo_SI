@@ -7,7 +7,7 @@ import {
 const INITIAL_STATE = {
   title: '',
   description: '',
-  subject_ids: '',
+  subject_ids: 0,
   local: '',
   date: '',
 };

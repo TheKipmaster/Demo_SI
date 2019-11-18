@@ -18,7 +18,10 @@ export const listingCreate = (fields, userToken) => (
   (dispatch) => {
     axios.post(
       `${API_URL}/listings`,
-      { listing: fields },
+      { listing: {
+        ...fields,
+        active: true,
+      } },
       { headers: { Authorization: userToken } },
     )
       .then(() => listingCreateSuccess(dispatch))

@@ -1,5 +1,6 @@
 export const EVENT_FORM_UPDATE = 'event_form_update';
-export const EVENT_CREATE_SUCCESS = 'event_create';
+export const EVENT_CREATE_SUCCESS = 'event_create_success';
+export const EVENT_CREATE_FAIL = 'event_create_fail';
 export const EVENT_FETCH_SUCCESS = 'event_fetch_success';
 export const EVENT_FETCH_FAIL = 'event_fetch_fail';
 

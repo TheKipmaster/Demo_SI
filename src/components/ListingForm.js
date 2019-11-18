@@ -51,11 +51,11 @@ class ListingForm extends React.Component {
         <CardItem>
           <Select
             label="Tipo de Anúncio"
-            options={[
-              "Venda",
-              "Aluguel",
-              "Empréstimo",
-            ]}
+            options={{
+              Venda: "sell",
+              Aluguel: "rent",
+              Empréstimo: "lend",
+            }}
             selectedValue={this.props.kind}
             onValueChange={this.onKindChange.bind(this)}
           />
