@@ -24,10 +24,10 @@ const ListingDetailsScreen = ({ navigation }) => {
 
         <CardItem>
           <View style={containerStyle}>
-            <Image source={require('../../assets/man.png')} style={avatarStyle} />
+            <Image source={{ uri: listing.avatar }} style={avatarStyle} />
             <View>
-              <Text style={textStyle}>Nome</Text>
-              <Text style={textStyle}>Matricula</Text>
+              <Text style={textStyle}>{listing.name}</Text>
+              <Text style={textStyle}>{listing.registration_id}</Text>
             </View>
           </View>
         </CardItem>

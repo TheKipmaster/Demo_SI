@@ -6,6 +6,8 @@ import {
   LISTING_CREATE_FAIL,
   LISTING_FETCH_SUCCESS,
   LISTING_FETCH_FAIL,
+  LISTING_FETCH_ALL_SUCCESS,
+  LISTING_FETCH_ALL_FAIL,
   LISTING_FORM_UPDATE,
   API_URL,
 } from './types';
@@ -26,11 +28,16 @@ export const listingFetch = (userToken) => (
   }
 );
 
-// export const listingFetchAll = (userToken) => {
-//   (dispatch) => {
-
-//   }
-// }
+export const listingFetchAll = (userToken) => (
+  (dispatch) => {
+    axios.get(
+      `${API_URL}/listings.json`,
+      { headers: { Authorization: userToken } },
+    )
+      .then(response => dispatch({ type: LISTING_FETCH_ALL_SUCCESS, payload: response.data }))
+      .catch(error => dispatch({ type: LISTING_FETCH_ALL_FAIL, payload: error.response.data }))
+  }
+);
 
 export const listingCreate = (fields, userToken) => (
   (dispatch) => {

@@ -9,6 +9,8 @@ export const LISTING_CREATE_SUCCESS = 'listing_create_success';
 export const LISTING_CREATE_FAIL = 'listing_create_fail';
 export const LISTING_FETCH_SUCCESS = 'listing_fetch_success';
 export const LISTING_FETCH_FAIL = 'listing_fetch_fail';
+export const LISTING_FETCH_ALL_SUCCESS = 'listing_fetch_all_success';
+export const LISTING_FETCH_ALL_FAIL = 'listing_fetch_all_fail';
 
 export const LOGIN_USER = 'login_user';
 export const LOGIN_USER_FAIL = 'login_user_fail';

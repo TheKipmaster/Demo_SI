@@ -1,6 +1,10 @@
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native';
+import { connect } from 'react-redux';
+
 import ListingCard from '../components/ListingCard';
+
+import { listingFetchAll } from '../actions';
 
 const DATA = [
   {
@@ -42,19 +46,40 @@ const DATA = [
 ];
 
 class FleaMarketScreen extends React.Component {
+  componentWillMount() {
+    this.props.listingFetchAll(this.props.token);
+  }
+
   renderItem({ item }) {
     return (<ListingCard listing={item} navigation={this.props.navigation} />);
+  }
+
+  activeListings() {
+    const { listings } = this.props;
+
+    const list = listings.filter(listing => listing.active);
+
+    return list.map(item => ({
+      ...item,
+      imageSource: require('../../assets/adsmini.png'),
+    }));
   }
 
   render() {
     return (
       <FlatList
-        data={DATA}
+        data={this.activeListings()}
         renderItem={this.renderItem.bind(this)}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
       />
     );
   }
 }
 
-export default FleaMarketScreen;
+const mapStateToProps = ({ auth, fleaMarket }) => {
+  const { token } = auth.user;
+
+  return { token, listings: fleaMarket.listings };
+}
+
+export default connect(mapStateToProps, { listingFetchAll })(FleaMarketScreen);
