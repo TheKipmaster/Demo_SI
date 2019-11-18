@@ -62,6 +62,12 @@ const MyListingsStack = createStackNavigator(
         title: 'Novo Anúncio',
       }),
     },
+    ListingDetailsScreen: {
+      screen: ListingDetailsScreen,
+      navigationOptions: () => ({
+        title: 'Detalhes do Anúncio',
+      }),
+    },
   },
   {
     initialRouteName: 'MyListingsScreen',
