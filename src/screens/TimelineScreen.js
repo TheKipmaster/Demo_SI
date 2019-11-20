@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
 import Timeline from 'react-native-timeline-listview';
 
@@ -52,6 +53,8 @@ class TimelineScreen extends React.Component {
 
     return (
       <View style={containerStyle}>
+        <NavigationEvents onWillFocus={this.componentWillMount.bind(this)} />
+
         <Card>
           <CardItem>
             <Button onPress={() => navigation.navigate('NewEventScreen')}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, Text, ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationEvents } from 'react-navigation';
 
 import { Card, CardItem, Button } from '../components/common';
 import ListingCard from '../components/ListingCard';
@@ -31,6 +32,8 @@ class MyListingsScreen extends React.Component {
 
     return (
       <ScrollView>
+        <NavigationEvents onWillFocus={this.componentWillMount.bind(this)} />
+
         <Card>
           <CardItem>
             <Button onPress={() => navigation.navigate("NewListingScreen")}>
