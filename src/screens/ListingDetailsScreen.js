@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, Image, View, StyleSheet, ScrollView, Linking } from 'react-native';
 import { Card, CardItem, Button } from '../components/common';
 
 const ListingDetailsScreen = ({ navigation }) => {
@@ -33,7 +33,7 @@ const ListingDetailsScreen = ({ navigation }) => {
         </CardItem>
 
         <CardItem>
-          <Button>Entrar em Contato</Button>
+          <Button onPress={() => Linking.openURL("tel:993271990")}>Entrar em Contato</Button>
         </CardItem>
 
       </Card>
