@@ -27,7 +27,7 @@ export const eventFetch = (userToken) => (
 export const eventCreate = (fields, userToken) => (
   (dispatch) => {
     axios.post(
-      `${API_URL}/user/calendar/events`,
+      `${API_URL}/user/calendar/events.json`,
       { event: fields },
       { headers: { Authorization: userToken } },
     )

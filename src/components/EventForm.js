@@ -53,9 +53,9 @@ class EventForm extends React.Component {
           <Select
             label="Disciplina"
             options={{
-              "Sistemas de Informação": 0,
-              "Informática Aplicada à Educação": 1,
-              "Projeto e Análise de Algoritmos": 2,
+              "Sistemas de Informação": 1,
+              "Informática Aplicada à Educação": 2,
+              "Projeto e Análise de Algoritmos": 3,
             }}
             selectedValue={this.props.subject_ids}
             onValueChange={this.onSubjectChange.bind(this)}
